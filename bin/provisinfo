@@ -8,13 +8,13 @@ program :version, '0.0.1'
 program :description, 'Provisioning for Human beings'
 
 command :info do |c|
-  c.syntax = 'provisinfo info [app1.mobileprovision]'
-  c.summary = ''
+  c.syntax = 'provisinfo info [options]'
+  c.summary = 'Extracts information from mobileprovision file'
   c.description = ''
   c.example 'description', 'command example'
-  c.option '--some-switch', 'Some switch that does something'
+  c.option '--filename STRING', 'String','.mobileprovision filepath'
   c.action do |args, options|
-    # Do something or c.when_called Provisioning info::Commands::Name
-    Provisinfo.process(args.first)
+    # Do something or c.when_called Provisioning info::Commands::Name    
+    Provisinfo.process(options.filename)
   end
 end
