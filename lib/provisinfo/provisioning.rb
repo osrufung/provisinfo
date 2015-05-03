@@ -26,19 +26,19 @@ class Provisioning
   def load_from_file(filepath)
     @filename = filepath
     xml_raw = `security cms -D -i #{@filename}`
-	xml_parsed = Plist::parse_xml(xml_raw)
-	@name = xml_parsed['Name']
-	@uuid = xml_parsed['UUID']
-	@appID = xml_parsed['application-identifier']
+	  xml_parsed = Plist::parse_xml(xml_raw)
+	  @name = xml_parsed['Name']
+	  @uuid = xml_parsed['UUID']
+	  @appID = xml_parsed['application-identifier']
 
   end
  
   def self.list_files()
     provisioning_file_paths = []
-	Dir.entries('.').each do |path|
-	  provisioning_file_paths << path if path=~ /.*\.mobileprovision$/
-	end
-	provisioning_file_paths
+	  Dir.entries('.').each do |path|
+	    provisioning_file_paths << path if path=~ /.*\.mobileprovision$/
+	  end
+	  provisioning_file_paths
   end
 end
   
