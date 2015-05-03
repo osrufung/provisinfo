@@ -3,9 +3,8 @@ require 'provisinfo/provisioning'
 
 module Provisinfo
   def self.process(provisioninFileName)
-    puts provisioninFileName
     p1 = Provisioning.new(provisioninFileName)
-    puts p1.name
-    
+    puts "Name:"+p1.name
+    puts "UUDID:"+p1.uuid       
   end
 end
