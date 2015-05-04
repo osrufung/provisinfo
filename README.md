@@ -1,6 +1,6 @@
 # Provisinfo
 
-Welcome to provisinfo Gem! It a CLI tool to extract metadata information for binary .MobileProvision files (really .plist)
+Welcome to provisinfo Gem! It a CLI tool and a ruby library to extract metadata information (name, UUId, AppID, type) from binary .mobileprovision files (a kind of .plist file)
 
 ## Installation
 
