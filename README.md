@@ -24,6 +24,7 @@ It can be used like a CLI client:
     provisinfo info --filepath p1.mobileprovision   
 
 Or you can use in your code:
+
     p1 = Provisioning.new('prov1.mobileprision')
     #show human readable information
     p1.show_info() 
