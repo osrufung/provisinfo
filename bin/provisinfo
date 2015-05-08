@@ -5,16 +5,18 @@ require 'commander/import'
 require 'provisinfo'
 
 program :version, '0.0.1'
-program :description, 'Provisioning for Human beings'
-
+program :description, 'CLI for \'provisinfo\' - Provisioning for Human beings. Extracts info from .mobileprovision files.'
+program :help, 'Author', 'Oswaldo Rubio <osrufung@gmail.com>'
+program :help, 'GitHub', 'https://github.com/osrufung/provisinfo'
+    
 command :info do |c|
   c.syntax = 'provisinfo info [options]'
   c.summary = 'Extracts information from mobileprovision file'
-  c.description = ''
-  c.example 'description', 'command example'
+  c.description = 'Show user friendly information from mobileprovision file'
+  c.example 'description', 'provisinfo info --filename prov1.mobileprovision'
   c.option '--filename STRING', 'String','.mobileprovision filepath'
   c.action do |args, options|
     # Do something or c.when_called Provisioning info::Commands::Name    
-    Provisinfo.process(options.filename)
+    Provisinfo.show_info(options.filename)
   end
 end

@@ -2,9 +2,8 @@ require 'provisinfo/version'
 require 'provisinfo/provisioning'
 
 module Provisinfo
-  def self.process(provisioninFileName)
+  def self.show_info(provisioninFileName)
     p1 = Provisioning.new(provisioninFileName)
-    puts "Name:"+p1.name
-    puts "UUDID:"+p1.uuid       
+    p1.show_info()         
   end
 end
