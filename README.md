@@ -19,9 +19,18 @@ Or install it yourself as:
     $ gem install provisinfo
 
 ## Usage
+It can be used like a CLI client:
+    provisinfo info --filepath p1.mobileprovision   
 
-TODO: Write usage instructions here
-
+Or you can use in your code:
+    p1 = Provisioning.new('prov1.mobileprision')
+    #show human readable information
+    p1.show_info() 
+    
+    #access to any property
+    p1.appID
+    
+    
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
