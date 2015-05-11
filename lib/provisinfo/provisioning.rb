@@ -1,5 +1,7 @@
 require 'plist'
 require 'json'
+require 'date'
+
 
 class Provisioning
   attr_accessor :name
@@ -8,6 +10,7 @@ class Provisioning
   attr_accessor :appID
   attr_accessor :teamID  
   attr_accessor :filename
+  attr_accessor :expirationDate
   
   #by default, it will load the first .mobileprovision file in current directory
   def initialize(filename = nil)   
@@ -32,7 +35,8 @@ class Provisioning
 	  @name = xml_parsed['Name']
 	  @uuid = xml_parsed['UUID']    
 	  @appID = xml_parsed['Entitlements']['application-identifier']
-    puts xml_parsed['application-identifier']
+    @expirationDate = xml_parsed['ExpirationDate']
+  
 
   end
  
@@ -44,11 +48,17 @@ class Provisioning
 	  provisioning_file_paths
   end
   
+  def is_expired()
+    now = DateTime.now
+    return self.expirationDate < now
+  end
+
   def show_info()
     puts "Name:"+self.name
     puts "UUDID:"+self.uuid 
     puts "AppID:"+self.appID 
     puts "TeamID:"+self.teamID
+    puts "ExpirationDate:"+self.expirationDate.strftime("%c")
     
   end 
   
