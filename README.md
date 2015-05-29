@@ -21,7 +21,7 @@ Or install it yourself as:
 ## Usage
 It can be used like a CLI client:
     
-    provisinfo info --filepath p1.mobileprovision   
+    provisinfo info --filename p1.mobileprovision   
 
 Or you can use in your code:
 
