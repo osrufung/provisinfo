@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["osrufung@gmail.com"]
 
   spec.summary       = %q{A provisioning profile CLI inspector}
-  spec.description   = %q{A simple provisioning profile CLI inspector to extract metadata from .mobileprovision file.}
+  spec.description   = %q{A simple provisioning profile CLI inspector to extract metadata from .mobileprovision file and validate iOS p12 certificates.}
   spec.homepage      = "https://github.com/osrufung/provisinfo"
 
 
