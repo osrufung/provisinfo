@@ -1,6 +1,6 @@
 # Provisinfo
 
-Welcome to provisinfo Gem! It a CLI tool and a ruby library to extract metadata information (name, UUId, AppID, type) from binary .mobileprovision files (a kind of .plist file)
+Welcome to provisinfo Gem! It a CLI tool and a ruby library to extract metadata information (name, UUId, AppID, type) from binary .mobileprovision files (a kind of .plist file). Also, it can be used to validate matching between provisioning files and .P12 certificates.
 
 ## Installation
 
@@ -35,6 +35,13 @@ Or you can use in your code:
     p1.appID
     puts p1.expirationDate < DateTime.now ? "Expired" : "Active"
     
+    # make a matching validation
+	if p1.matches_certificate?('3WKJWX.p12','')
+      puts_message(RED, "error", "Provisioning profile was not signed with provided certificate.")
+    else
+      puts_message(GREEN, "passed", "Provisioning profile matches certificate file.")
+    end
+
     
 ## Development
 
