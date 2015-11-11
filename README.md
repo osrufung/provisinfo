@@ -23,6 +23,8 @@ It can be used like a CLI client:
     
     provisinfo info --filename p1.mobileprovision   
 
+    provisinfo validate --provisioning p1.mobileprovision --certificate cert.p12
+
 Or you can use in your code:
 
     p1 = Provisioning.new('prov1.mobileprision')
@@ -31,6 +33,7 @@ Or you can use in your code:
     
     #access to any property
     p1.appID
+    puts p1.expirationDate < DateTime.now ? "Expired" : "Active"
     
     
 ## Development

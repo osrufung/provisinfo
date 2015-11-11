@@ -9,14 +9,29 @@ program :description, 'CLI for \'provisinfo\' - Provisioning for Human beings. E
 program :help, 'Author', 'Oswaldo Rubio <osrufung@gmail.com>'
 program :help, 'GitHub', 'https://github.com/osrufung/provisinfo'
     
+default_command :info
+
 command :info do |c|
   c.syntax = 'provisinfo info [options]'
-  c.summary = 'Extracts information from mobileprovision file'
-  c.description = 'Show user friendly information from mobileprovision file'
+  c.summary = 'Show user friendly information from mobileprovision file'
+  c.description = c.summary
   c.example 'description', 'provisinfo info --filename prov1.mobileprovision'
   c.option '--filename STRING', 'String','.mobileprovision filepath'
   c.action do |args, options|
     # Do something or c.when_called Provisioning info::Commands::Name    
     Provisinfo.show_info(options.filename)
+  end
+end
+
+command :validate do |c|
+  c.syntax = 'provisinfo validate [options]'
+  c.summary = 'Validates that a provisioning profile was signed with a given developer certificate'
+  c.description = c.summary
+  c.example 'description', 'provisinfo validate --provisioning prov1.mobileprovision --certificate cert.p12'
+  c.option '--provisioning STRING', 'String','.mobileprovision filepath'
+  c.option '--certificate STRING', 'String','path to a p12 certificate.'
+  c.action do |args, options|
+    # Do something or c.when_called Provisioning info::Commands::Name    
+    Provisinfo.validate(options.provisioning,options.certificate)
   end
 end

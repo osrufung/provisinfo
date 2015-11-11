@@ -48,7 +48,6 @@ class Provisioning
 	  @uuid = xml_parsed['UUID']    
 	  @appID = xml_parsed['Entitlements']['application-identifier']
     @expirationDate = xml_parsed['ExpirationDate']
-  
 
   end
  
@@ -74,7 +73,7 @@ class Provisioning
     
   end 
   
-  def validate(certificate_filename, password)
+  def matches_certificate?(certificate_filename, password)
 
     if certificate_filename.nil? or not File.exists?(certificate_filename)
       abort("can't find the certificate file.")
@@ -101,15 +100,7 @@ class Provisioning
     end
   end
   
-  if @provisioning_cert.to_s != cert.certificate.to_s
-    puts_message(RED, "error", "Provisioning profile was not signed with provided certificate.")
-
-    exit 1
-  else
-    puts_message(GREEN, "passed", "Provisioning profile signature validation passed.")
-  
-    exit 0
-  end
+  return @provisioning_cert.to_s != cert.certificate.to_s
   end
 
  end
@@ -118,12 +109,18 @@ class Provisioning
 if __FILE__ == $0
 
   # failed test case
-  # p1 = Provisioning.new('failed.mobileprovision')
-  # p1.show_info()  
+  p1 = Provisioning.new('3WKJWX.mobileprovision')
+  p1.show_info()  
+  p p1.expirationDate < DateTime.now ? "Expired" : "Active"
 
+ 
   # Validation case
     p1 = Provisioning.new('3WKJWX.mobileprovision')
-    p1.validate('3WKJWX.p12','')
- 
+    
+   if p1.matches_certificate?('3WKJWX.p12','')
+    puts_message(RED, "error", "Provisioning profile was not signed with provided certificate.")
+   else
+    puts_message(GREEN, "passed", "Provisioning profile matches certificate file.")
+  end
 
 end  
