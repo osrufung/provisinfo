@@ -3,7 +3,7 @@ require 'provisinfo/provisioning'
 
 module Provisinfo
   def self.show_info(provisioningFileName)
-    p1 = Provisioning.new(provisionginFileName)
+    p1 = Provisioning.new(provisioningFileName)
     p1.show_info()         
   end
 
